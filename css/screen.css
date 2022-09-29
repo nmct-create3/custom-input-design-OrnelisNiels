@@ -67,6 +67,13 @@
     /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
     /*  = 72px */
+
+    --global-input-backgroundColor: White;
+    --global-input-color: var(--global-color-neutral-xxxx-dark);
+    --global-input-borderColor: var(--global-color-neutral-xxx-light);
+    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 }
 
 /*------------------------------------*\
@@ -601,9 +608,10 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
-    border-radius: var(--global-borderRadius);
-    color: var(--global-color-neutral-xxxx-dark);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    background-color: var(--global-input-backgroundColor);
+    color: var(--global-input-color);
+    
     background-color: White;
     font-family: inherit;
     font-size: 16px;
@@ -679,6 +687,150 @@ input::placeholder {
     background-color: var(--global-color-alpha-dark);
     box-shadow: none;
 }
+
+
+
+ .c-custom-option__fake-input{
+    display:flex;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--global-color-neutral-xxx-light);
+    margin-right: 8px;
+    border-radius: var(--global-borderRadius);
+    align-items: center;
+    justify-content: center;
+    
+ }
+ .c-custom-option__fake-input--radio{
+    border-radius: 100%;
+ }
+
+  /* Checkbox */
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    width: 5px;
+    height: 5px;
+    fill: var(--global-color-alpha);
+    
+}
+ /* Radiobutton */
+.c-custom-option__fake-input--radio .c-custom-option__symbol {
+    width: 3px;
+    height: 3px;
+    background-color: var(--global-color-alpha);
+    border-radius: 100%;
+    
+    
+}
+ .c-custom-option{
+    display: flex;
+ }
+label svg{
+    display: none;
+}
+.c-option--hidden:checked + label svg{
+    /* background-color: hotpink; */
+    display: block;
+    opacity: 1;
+}
+
+.c-option--hidden:hover+.c-custom-option {
+    /* color: red; */
+    /* border-color: red; */
+}
+.c-option--hidden:hover+.c-custom-option  .c-custom-option__fake-input{
+    /* color: red; */
+    border-color: grey
+}
+
+.c-option--hidden:checked+.c-custom-option .c-custom-option__symbol {
+    
+    opacity: 1;
+    transform: scale(2);
+    
+}
+.c-custom-option__symbol {
+    opacity: 0;
+    display: block;
+    transition:cubic-bezier(0.250, 0.100, 0.250, 1.000);
+    transition: all var(--global-transitionTiming-alpha);
+}
+
+
+.c-option-list{
+    margin-bottom: 24px;
+}
+
+.c-option-list__item {
+    margin-bottom: 12px;
+}
+
+.c-custom-toggle__fake-input{
+    height: 24px;
+    width: 48px;
+    border: 1px solid var(--global-color-neutral-xxx-light);
+    border-radius: 24px;
+    display: block;
+    margin-right: 16px;
+    background-color: var(--global-color-neutral-xxxx-light);
+    transition: all var(--transition-alpha);
+}
+
+
+.c-custom-toggle{
+    display: flex;
+    align-items: center;
+}
+/* Bol maken */
+.c-custom-toggle__fake-input::after{
+    display: block; 
+    height: 22px;
+    width: 22px;
+    /* border: 1px solid var(-- global-color-neutral-xxx-light); */
+    border-radius: 100%;
+    background-color: white;
+    content: "";
+    position: relative;
+    transition: all var(--transition-alpha);
+}
+.c-option--hidden:checked+.c-custom-toggle .c-custom-toggle__fake-input::after{
+    transform: translateX(24px);
+}
+
+.c-option--hidden:checked+.c-custom-toggle .c-custom-toggle__fake-input{
+    background-color: #3385FF;
+}
+
+.c-toggle-list__item +.c-toggle-list__item{
+    border-top: 1px solid var(--global-color-neutral-xxx-light);
+    margin-top: 12px;
+    padding-top: 12px;
+
+}
+
+ .c-custom-toggle--inverted{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 0px;
+    width: 100%;
+    justify-content: space-between;
+ }
+ .c-custom-toggle--inverted .c-custom-toggle__fake-input {
+     margin-right: 0px;
+     
+ }
+ .c-custom-select{
+    display: block;
+    position: relative;
+ }
+ .c-custom-select__symbol{
+    fill: var(--global-color-neutral-x-light);
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+ }
+
 
 /*------------------------------------*\
 #UTILITIES
