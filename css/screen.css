@@ -74,6 +74,14 @@
     --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
     --global-input-focus-borderColor: var(--global-color-alpha);
     --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+    
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark)
+    }
 }
 
 /*------------------------------------*\
@@ -94,6 +102,15 @@ html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: var(--global-color-neutral-xxxx-dark);
+    }
+    .c-card{
+        background-color: var(--global-color-neutral-xxx-dark);
+    }
 }
 
 *,
@@ -524,15 +541,15 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
 
 .c-logo__path--2 {
-    fill: var(--global-color-alpha);
+    fill: var(--logo__path--2--fill, var(--global-color-alpha));
 }
 
 .c-logo__path--3 {
-    fill: var(--global-color-alpha-x-dark);
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-x-dark));
 }
 
 /*
@@ -612,7 +629,8 @@ input::placeholder {
     background-color: var(--global-input-backgroundColor);
     color: var(--global-input-color);
     
-    background-color: White;
+    --input__backgroundcolor: White;
+    background-color: var(--input__backgroundcolor);
     font-family: inherit;
     font-size: 16px;
     line-height: calc(var(--global-baseline) * 3);
@@ -707,9 +725,10 @@ input::placeholder {
 
   /* Checkbox */
 .c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    --checkbox--fill: var(--global-color-alpha);
     width: 5px;
     height: 5px;
-    fill: var(--global-color-alpha);
+    fill: var(--checkbox--fill);
     
 }
  /* Radiobutton */
@@ -831,6 +850,41 @@ label svg{
     right: 12px;
  }
 
+@media (prefers-color-scheme: dark) {
+    .c-card {
+        background-color: var(--global-color-neutral-xxx-dark);
+    }
+    .c-input{
+        --input__backgroundcolor: var(--global-color-neutral-xxxx-dark);
+        --global-input-borderColor: var(--global-color-neutral-xxxx-dark);
+        --global-color-neutral-xx-light: #3385FF;
+        border-radius: 3px;
+        color:white;
+    }
+    .c-input::placeholder{
+        color: var(--global-color-neutral-dark);
+    }
+    .c-card__title{
+        color:white;
+    }
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
+    .c-label{
+        color: var(--global-color-neutral-x-light)
+    }
+    .c-custom-option__fake-input--checkbox{
+        --checkbox--fill: var(--global-color-neutral-xxxx-dark);
+        border-color: var(--checkbox--fill);
+        background-color: var(--checkbox--fill);
+    }
+    .c-card__footer{
+        border-top-color: var(--global-color-neutral-xxxx-dark);;
+    }
+
+}
 
 /*------------------------------------*\
 #UTILITIES
